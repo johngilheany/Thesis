@@ -1,3 +1,4 @@
+#test
 getPath_min_vol <- function(){
   source_link <- "https://www.ishares.com/us/products/239695/ishares-msci-usa-minimum-volatility-etf/1467271812596.ajax?fileType=csv&fileName=USMV_holdings&dataType=fund"
   url <- getwd()
