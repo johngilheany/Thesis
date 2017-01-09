@@ -28,7 +28,6 @@ printTable_min_vol <- function(){
     all_content <- readLines(src[2])
     skip_ten = all_content[-c(1:10)]
     data2 = read.csv(textConnection(skip_ten), header = TRUE, stringsAsFactors = FALSE)
-    View(data2)
   }
 }
 
