@@ -40,8 +40,20 @@ process_data <- function(category) {
     result <- rbind(result, processed)
   }
     result <- result[order(result$Ticker),]
-    file_in_dir = paste(category, ".csv", sep = "")
-    write.csv(result, paste("inst/extdata/processed_data", category, file_in_dir, sep = "/"), row.names = FALSE)
+    file_in_dir <- paste(category, ".csv", sep = "")
+    dest_path <- paste("inst/extdata/processed_data", category, file_in_dir, sep = "/")
+    write.csv(result, dest_path, row.names = FALSE)
+    file_in_dir <- paste(category, ".RData", sep = "")
+    
+    if (category == "minvol"){
+      minvol <- read.csv(dest_path);
+      save(minvol, file = paste("data", file_in_dir, sep = "/"))
+    } else if (category == "usa"){
+      usa <- read.csv(dest_path);
+      save(usa, file = paste("data", file_in_dir, sep = "/"))
+    } else {
+      warning("The argument requires either \"minvol\" or \"usa\"")
+    }
 }
 
 
