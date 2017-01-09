@@ -1,4 +1,3 @@
-#' @export
 download_data <- function(){
   dates <- as.character(read.table("C:/Users/Nam Nguyen/Documents/MSCI-master/msci/inst/extdata/release_date.txt")$V1)
   path_min_vol <- "https://www.ishares.com/us/products/239695/ishares-msci-usa-etf/1467271812596.ajax?fileType=csv&fileName=EUSA_holdings&dataType=fund&asOfDate="
@@ -21,7 +20,6 @@ download_helper <- function(source, date, category){
   download.file(source, dest)
 }
 
-#' @export
 process_data <- function(category) {
   min_vol_paths <- dir(link <- paste("inst/extdata", category, sep = "/"), pattern = "\\.csv$", full.names = TRUE)
   result <- data.frame()
