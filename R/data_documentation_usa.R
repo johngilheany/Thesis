@@ -18,7 +18,9 @@
 #'   \item ISIN = International Securities Identification Number
 #'   \item Exchange = Stock Exchange where asset is traded
 #'   \item Date = Date when asset was in the portfolio
+#'   }
 #' @docType data
 #' @name usa
 #'
-#' @keywords commodity backtest data
+#' @keywords msci data usa min
+NULL

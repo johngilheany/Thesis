@@ -1,7 +1,7 @@
-#' MSCI USA data from 10/31/2011 to 01/05/2017
+#' MSCI Min Volatility data from 10/31/2011 to 01/05/2017
 #' 
-#' This data frame contains the MSCI USA indices and their consitutents from 
-#' 2011-10-31 to 2017-05-05. 
+#' This data frame contains the MSCI Min Volatility indices and their consitutents from 
+#' 2011-10-31 to 2017-01-05. 
 #' 
 #' @format A data frame with 11 variables 
 #' \itemize{ 
@@ -18,7 +18,9 @@
 #'   \item ISIN = International Securities Identification Number
 #'   \item Exchange = Stock Exchange where asset is traded
 #'   \item Date = Date when asset was in the portfolio
+#'   }
 #' @docType data
-#' @name usa
+#' @name minvol
 #'
-#' @keywords commodity backtest data
+#' @keywords security asset min volatility msci data
+NULL
