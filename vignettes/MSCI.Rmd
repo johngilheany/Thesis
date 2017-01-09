@@ -1,0 +1,22 @@
+---
+title: "MSCI Indices"
+author: "Nam Nguyen & John Gilheany"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+MSCI is a package that allows you to view the data of MSCI USA and MSCI Min Volatility.
+
+#Data
+The raw data can be found in inst/extdata while processed data can be viewed by running the following commands:
+
+ * __data(usa)__: Load the data for MSCI USA
+ * __View(usa)__: Display the dataframe of MSCI USA
+ * __data(minvol)__: Load the data for MSCI Min Volatility
+ * __View(minvol)__: Display the dataframe of MSCI USA
+ * __?usa__: Browse help page of MSCI USA dataframe
+ * __?minvol__: Browse help page of MSCI Min Volatility dataframe
