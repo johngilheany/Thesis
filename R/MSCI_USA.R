@@ -6,19 +6,17 @@ getPath_usa <- function(){
   return(result);
 }
 
-#' download_file_usa()
-#'
-#' Download the dataset from https://www.ishares.com
-#' @export
+# download_file_usa()
+# 
+# Download the dataset from https://www.ishares.com
 download_file_usa <- function(){
   src <- getPath_usa();
   download.file(src[1], destfile = src[2])
 }
 
-#' printTable_usa()
-#'
-#' Print out the table of MSCI USA constituents for a specific date
-#' @export
+# printTable_usa()
+#
+# Print out the table of MSCI USA constituents for a specific date
 printTable_usa <- function(){
   src <- getPath_usa();
   if (!file.exists(src[2])) stop("You need to download the dataset (run download_file_usa)")
@@ -30,11 +28,10 @@ printTable_usa <- function(){
   }
 }
 
-#' printDate_usa()
-#'
-#' Print out the date when the MSCI USA data printed out
-#' by printTable_usa() was updated
-#' @export
+# printDate_usa()
+#
+# Print out the date when the MSCI USA data printed out
+# by printTable_usa() was updated
 printDate_usa <- function(){
   src <- getPath_usa();
   all_content <- readLines(src[2])

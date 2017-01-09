@@ -1,4 +1,3 @@
-#test87654678
 getPath_min_vol <- function(){
   source_link <- "https://www.ishares.com/us/products/239695/ishares-msci-usa-minimum-volatility-etf/1467271812596.ajax?fileType=csv&fileName=USMV_holdings&dataType=fund"
   url <- getwd()
@@ -7,20 +6,18 @@ getPath_min_vol <- function(){
   return(result);
 }
 
-#' download_file_min_vol()
-#'
-#' Download the dataset from https://www.ishares.com
-#' @export
+# download_file_min_vol()
+#
+# Download the dataset from https://www.ishares.com
 download_file_min_vol <- function(){
   src <- getPath_min_vol();
   message(src[2])
   download.file(src[1], destfile = src[2])
 }
 
-#' printTable_min_vol()
-#'
-#' Print out the table of MSCI min volatility constituents for a specific date
-#' @export
+# printTable_min_vol()
+#
+# Print out the table of MSCI min volatility constituents for a specific date
 printTable_min_vol <- function(){
   src <- getPath_min_vol();
   if (!file.exists(src[2])) message("You need to download the dataset (run download_file_min_vol)")
@@ -31,11 +28,11 @@ printTable_min_vol <- function(){
   }
 }
 
-#' printDate_min_vol()
-#'
-#' Print out the date when the MSCI min_vol data printed out
-#' by printTable_min_vol() was updated
-#' @export
+# printDate_min_vol()
+#
+# Print out the date when the MSCI min_vol data printed out
+# by printTable_min_vol() was updated
+
 printDate_min_vol <- function(){
   src <- getPath_min_vol();
   all_content <- readLines(src[2])
