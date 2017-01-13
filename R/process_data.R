@@ -20,36 +20,38 @@ download_helper <- function(source, date, category){
   download.file(source, dest)
 }
 
+#' @export
 process_data <- function(category) {
   min_vol_paths <- dir(link <- paste("inst/extdata", category, sep = "/"), pattern = "\\.csv$", full.names = TRUE)
   result <- data.frame()
   
   for (val in min_vol_paths){
-    raw_data <- readLines(val)
+  date <- readLines(val)[3]
+  # extract the date
+  date <- gsub(".*,","", (date))
+  date <- gsub("\"", "", date)
+  
+  
+  type <- list()
     
-    # extract the date
-    date <- raw_data[3]
-    date <- gsub(".*,","", (date))
-    date <- gsub("\"", "", date)
-    
-    # extract the data
-    trimmed <- raw_data[-c(1:10)]
-    trimmed2 <- head(trimmed, -1)
-    processed <- read.csv(textConnection(trimmed2), header = TRUE, stringsAsFactors = FALSE)
-    processed$Date <- date
-    result <- rbind(result, processed)
+  raw_data <- read_csv(val, skip = 10, trim_ws = TRUE, col_types = "cccndnnncccc", na = c("-"))
+  processed <- head(raw_data, -1)
+  processed$Date <- dmy(date)
+  result <- rbind(result, processed)
   }
-    result <- result[order(result$Ticker),]
-    file_in_dir <- paste(category, ".csv", sep = "")
+  
+  result <- result[order(result$Name),]
+  result <- fill(result, Sector, .direction = c("up"))
+    
+    
     dest_path <- paste("inst/extdata/processed_data", category, file_in_dir, sep = "/")
-    write.csv(result, dest_path, row.names = FALSE)
     file_in_dir <- paste(category, ".RData", sep = "")
     
     if (category == "minvol"){
-      minvol <- read.csv(dest_path);
+      minvol <- result
       save(minvol, file = paste("data", file_in_dir, sep = "/"))
     } else if (category == "usa"){
-      usa <- read.csv(dest_path);
+      usa <- result
       save(usa, file = paste("data", file_in_dir, sep = "/"))
     } else {
       warning("The argument requires either \"minvol\" or \"usa\"")

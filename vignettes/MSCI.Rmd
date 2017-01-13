@@ -22,3 +22,18 @@ The raw data can be found in inst/extdata while processed data can be viewed by 
  * __?minvol__: Browse help page of MSCI Min Volatility dataframe
 
 The unique sectors were identified, and a table with relative weights of each was constructed, for the data on a monthly basis. The different sectors were S.T.Securities, Health.care, Industrials, Financials, Materials, Consumer.Discretionary, Information.Technology, Energy, Consumer.Staples, Utilities, Telecommunication.Services, Real.Estate, Cash.Derivatives, Telecommunications. The date is shown on the leftmost rows, followed by the different sectors. Each sector then has its relative weight with respect to the date in the corresponding row.
+
+```{r}
+#download package
+devtools::install_github("nnguyen2496/mscir")
+library(mscir)
+
+# Display the data for MSCI USA
+View(usa) 
+
+#Display the data for MSCI Min Vol
+View(minvol) 
+
+#Show relative weight of each sector for all dates
+compute_rel_weight()
+```

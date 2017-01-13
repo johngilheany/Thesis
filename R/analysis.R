@@ -3,9 +3,7 @@
 #' @export
 compute_rel_weight <- function(){
 
-  data(usa)
   dates <- unique(usa$Date)
-  
   summary <- character()
   for (date in dates){
     # Extract entries with the matched date
