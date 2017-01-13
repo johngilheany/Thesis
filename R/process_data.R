@@ -31,9 +31,6 @@ process_data <- function(category) {
   date <- gsub(".*,","", (date))
   date <- gsub("\"", "", date)
   
-  
-  type <- list()
-    
   raw_data <- read_csv(val, skip = 10, trim_ws = TRUE, col_types = "cccndnnncccc", na = c("-"))
   processed <- head(raw_data, -1)
   processed$Date <- dmy(date)
@@ -43,9 +40,7 @@ process_data <- function(category) {
   result <- result[order(result$Name),]
   result <- fill(result, Sector, .direction = c("up"))
     
-    
-    dest_path <- paste("inst/extdata/processed_data", category, file_in_dir, sep = "/")
-    file_in_dir <- paste(category, ".RData", sep = "")
+  file_in_dir <- paste(category, ".RData", sep = "")
     
     if (category == "minvol"){
       minvol <- result
