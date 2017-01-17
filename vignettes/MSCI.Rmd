@@ -46,5 +46,30 @@ Plot industry weight of each sector over time:
 
 ```{r}
 data(minvol_weight)
+data(usa_weight)
+
+# MSCI Minvol's sector weights over time
 ggplot(data = minvol_weight) + geom_line(mapping = aes(x = Date, y = Weight)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") +  facet_wrap(~ Sector, nrow = 4)
+
+# MSCI USA's sector weights over time
+ggplot(data = usa_weight) + geom_line(mapping = aes(x = Date, y = Weight)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") +  facet_wrap(~ Sector, nrow = 4)
+
+# MSCI Minvol's market cap over time
+df1 <- aggregate(Market.Value~Date + Sector, data = minvol, FUN = sum, na.action = na.omit)
+df1 <- mutate(df1, Sector = ifelse(Sector == "Telecommunications", "Telecommunication Services", Sector))
+ggplot(data = df1) + geom_line(mapping = aes(x = Date, y = Market.Value)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") +  facet_wrap(~ Sector, nrow = 4)
+
+# MSCI USA's market cap over time
+names(usa)[7] <- "Market.Value"
+df2 <- aggregate(Market.Value~Date + Sector, data = usa, FUN = sum, na.action = na.omit)
+df2 <- mutate(df2, Sector = ifelse(Sector == "Telecommunications", "Telecommunication Services", Sector))
+ggplot(data = df2) + geom_line(mapping = aes(x = Date, y = Market.Value)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") +  facet_wrap(~ Sector, nrow = 4)
+
+# MSCI vs USA
+ggplot() + geom_line(data = df1, mapping = aes(x = Date, y = Market.Value, color = "red")) +  geom_line(data = df2, mapping = aes(x = Date, y = Market.Value, color = "blue")) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") + facet_wrap(~ Sector, nrow = 4)
 ```
+
+
+
+
+
