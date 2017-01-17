@@ -15,6 +15,7 @@ Suggests: knitr,
     rmarkdown,
     MASS,
     tidyverse,
-    lubridate
+    lubridate,
+    scales
 VignetteBuilder: knitr
 lazyload: TRUE

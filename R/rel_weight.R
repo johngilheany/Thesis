@@ -29,8 +29,8 @@ rel_weight <- function(category){
   }
     colnames(summary) <- c("Date", "Sector", "Weight" )
     summary$Date <- as.Date(summary$Date, origin = "1970-01-01")
-    summary[summary$Sector == "Telecommunications", ] <- "Telecommunication Services"
-    summary <- aggregate(. ~  Date + Sector, data = summary, sum)
+    summary$Sector <- as.character(summary$Sector)
+    summary <- mutate(summary, Sector = ifelse(Sector == "Telecommunications", "Telecommunication Services", Sector))
     
     if (category == "minvol"){
       minvol_weight <- summary

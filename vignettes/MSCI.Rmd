@@ -25,8 +25,9 @@ The unique sectors were identified, and a table with relative weights of each wa
 
 ```{r}
 #download package
-devtools::install_github("nnguyen2496/mscir")
 library(mscir)
+library(ggplot2)
+library(scales)
 
 # Display the data for MSCI USA
 View(usa) 
@@ -45,5 +46,5 @@ Plot industry weight of each sector over time:
 
 ```{r}
 data(minvol_weight)
-ggplot(data = minvol_weight) + geom_line(mapping = aes(x = Date, y = Weight)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "1 year") +  facet_wrap(~ Sector, nrow = 4)
+ggplot(data = minvol_weight) + geom_line(mapping = aes(x = Date, y = Weight)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "3 years") +  facet_wrap(~ Sector, nrow = 4)
 ```
