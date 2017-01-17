@@ -44,9 +44,14 @@ process_data <- function(category) {
     
     if (category == "minvol"){
       minvol <- result
+      name_list <- make.names(colnames(minvol), unique = TRUE)
+      names(minvol) <- name_list
       save(minvol, file = paste("data", file_in_dir, sep = "/"))
     } else if (category == "usa"){
       usa <- result
+      name_list <- make.names(colnames(usa), unique = TRUE)
+      names(usa) <- name_list
+      usa <- mutate(usa, Market.Value = Market.Value * 1000)
       save(usa, file = paste("data", file_in_dir, sep = "/"))
     } else {
       warning("The argument requires either \"minvol\" or \"usa\"")
