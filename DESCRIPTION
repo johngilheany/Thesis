@@ -1,6 +1,6 @@
 Package: mscir
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Display MSCI USA and MSCI Min Volatility Data
 Version: 0.0.9
 Author: person("John", "Gilheany", email = "johngilheany@gmail.com", role =
     c("cre", "aut")) person("Nam", "Nguyen", email = "Nam.T.Nguyen@williams.edu",
