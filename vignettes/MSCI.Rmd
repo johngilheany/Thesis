@@ -74,6 +74,26 @@ scale_colour_manual(name="Line Color",
     values=c(minvol="red", usa="blue")) +
 facet_wrap(~ Sector, nrow = 4)
 ```
+The market caps of all the constituents by sector of both the MSCI Min Vol and MSCI USA Equal Weight indices were found and plotted against one another. MSCI USA Equal Weight is shown in blue, while the MSCI Min Vol is shown in red. The time frame is from Oct 2011 to January 2017. The market value unit is dollars. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
