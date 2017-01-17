@@ -11,7 +11,7 @@ vignette: >
 
 MSCI is a package that allows you to view the data of MSCI USA and MSCI Min Volatility.
 
-#Data
+#I) Data Overview
 The raw data can be found in inst/extdata while processed data can be viewed by running the following commands:
 
  * __data(usa)__: Load the data for MSCI USA
@@ -34,6 +34,16 @@ View(usa)
 #Display the data for MSCI Min Vol
 View(minvol) 
 
-#Show relative weight of each sector for all dates
-compute_rel_weight()
+#Display the weight of each sector over time
+View(usa_weight)
+View(minvol_weight)
+```
+
+#II) Data Analysis
+
+Plot industry weight of each sector over time:
+
+```{r}
+data(minvol_weight)
+ggplot(data = minvol_weight) + geom_line(mapping = aes(x = Date, y = Weight)) + scale_x_date(labels = date_format("%m-%Y"), date_breaks = "1 year") +  facet_wrap(~ Sector, nrow = 4)
 ```
