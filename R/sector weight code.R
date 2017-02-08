@@ -203,6 +203,3 @@ sector_weight <- function(sector){
     }    
   }
 }
-
-  
-  
