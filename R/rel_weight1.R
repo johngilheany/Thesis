@@ -32,9 +32,10 @@ rel_weight <- function(category){
   
   if (category == "minvol"){
     minvol_weight <- summary
-    save(minvol_weight, file = "C:/Users/Nam Nguyen/Documents/MSCI-master/msci/data/minvol_weight.RData")
-  } else {
+    save(minvol_weight, file = "C:/Users/John Gilheany/Documents/MSCI-master/msci/data/minvol_weight.RData")
+  } else 
+    if (category == "usa") {
     usa_weight <- summary
-    save(usa_weight, file = "C:/Users/Nam Nguyen/Documents/MSCI-master/msci/data/usa_weight.RData")
+    save(usa_weight, file = "C:/Users/John Gilheany/Documents/MSCI-master/msci/data/usa_weight.RData")
   }
 }   
