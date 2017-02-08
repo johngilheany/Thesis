@@ -37,16 +37,5 @@ graphic <- function(ticker = "", category = "", period){
     stop("category must be either \"usa\" or \"minvol\"")
   }
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-}         
+ 
                 
