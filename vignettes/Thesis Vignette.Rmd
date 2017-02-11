@@ -5,9 +5,45 @@ date: "2/11/2017"
 output: pdf_document
 ---
 
+"mscir" is a package that allows you to view the data of MSCI USA and MSCI Min Volatility.
+
+#I) Data Overview
+The raw data can be found in inst/extdata while processed data can be viewed by running the following commands:
+
+ * __data(usa)__: Load the data for MSCI USA
+ * __View(usa)__: Display the dataframe of MSCI USA
+ * __data(minvol)__: Load the data for MSCI Min Volatility
+ * __View(minvol)__: Display the dataframe of MSCI USA
+ * __?usa__: Browse help page of MSCI USA dataframe
+ * __?minvol__: Browse help page of MSCI Min Volatility dataframe
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r}
+## Load needed Packages from Library
+library(mscir)
+library(ggplot2)
+
+## View beginning and end of MSCI USA Data
+head(usa)
+tail(usa)
+
+## View beginning and end of MSCI USA Data
+head(minvol)
+tail(minvol)
+
+
+```
+
+
+
+
+
+The unique sectors were identified, and a table with relative weights of each was constructed, for the data on a monthly basis. The different sectors were S.T.Securities, Health.care, Industrials, Financials, Materials, Consumer.Discretionary, Information.Technology, Energy, Consumer.Staples, Utilities, Telecommunication.Services, Real.Estate, Cash.Derivatives, Telecommunications. The date is shown on the leftmost rows, followed by the different sectors. Each sector then has its relative weight with respect to the date in the corresponding row.
+
 
 ## R Markdown
 
