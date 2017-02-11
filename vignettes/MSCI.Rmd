@@ -1,5 +1,5 @@
 ---
-title: "MSCI Indices"
+title: "Thesis"
 author: "Nam Nguyen & John Gilheany"
 date: "`r Sys.Date()`"
 output: rmarkdown::pdf_document
