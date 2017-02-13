@@ -5,9 +5,26 @@ date: "2/11/2017"
 output: pdf_document
 ---
 
+#I) Literature Review
+##High Returns from Low Risk By Pim van Vliet and Jan De Koning
+
+One of the most widely believed tenants of finance is the concept that with more risk comes more reward. However, looking at historical market returns, this does not appear to be the case. Over an 86-year period from 1929, low volatility stocks outperformed high volatility stocks by a factor of 18. If both portfolios started off with the same $100, the low volatility portfolio end value would be $395,000, while the high volatility portfolio would be worth just $21,000. Low risk stocks returned 10.2% annually whereas the high risk stocks returned just 6.4% annually. This difference of 3.8% is striking, and presents an anomaly in the field of finance.  
+
+This begs the question of how a portfolio of lower volatility stocks can outperform higher volatility stocks over a long period of time. The primary way this occurs is that the low volatility portfolio loses less during times of financial stress. For example, in 1932 following the Great Depression, it was observed that the high volatility portfolio shrunk from $100 in value to $5 in value, while the low volatility portfolio shrunk from $100 to $30. Since the low volatility portfolio is able to lose less money, it is able to grow capital more effectively than the high volatility portfolio. In this example, the annualized volatility of the low risk portfolio was 13%, and the annualized volatility of the high risk portfolio was around 2.5 times that, at 36%. In addition to being more risky, the high volatility portfolio was outperformed by 18 times. 
+Thus, it seems very counterintuitive that fund managers and investors would not only invest in low risk stocks. Part of understanding this comes from interpreting what risk is defined as in the financial community. Risk is not necessarily defined as losing money, as it may be for an individual, but instead underperforming a benchmark. Volatility is also an important concept to understand. Volatility is an important measure of financial risk, as it comes from the price fluctuations of a stock or investment. Volatility is also one of the best indicators of bankruptcy. Taking some risk does pay off, as the relationship between risk and return starts off slightly positive before leveling off and becoming negative. 
+
+Many researchers focus on short-term periods when analyzing stock returns instead of longer term for a couple of reasons. The first reason many focus on “single period returns”, which in most academic studies is just a one month period, is because this takes away the significance of compounding. The longer the investment period, the more risk one takes in hurting long term returns through compounding. By not fully including the magic “return upon return” effect of compounding, a high-risk portfolio in this book performs more than 6% better per year. For example, if in month a portfolio worth $100 drops 50% to $50, then the next month increases 50% to $75, the investment return is dependent on how one divides the time period. Looking at it on a monthly basis, even though the portfolio lost $25, the net return would be -50% +50%, or 0%. Looking at it on a long term basis, the net return was -25%. 
+
+David Blitz, the head of quantitative equity research at Robeco, discusses this different perspective as somewhat due to the need to benchmark the performance of an investment manager. This is a concept known as “relative” risk. In the examples above, everything has been in respect to absolute risk - that is how much money is being gained or lost due to overall stock movements, with regard to the starting amount of money invested. Volatility, in itself, captures these changes in the price of a stock, and is an absolute risk measurement. Many institutional investors do not look at risk on an absolute level, as a retiree or mom and pop investor may, but instead look at the risk of a portfolio with respect to market or some other widely accepted benchmark. For these investors, the risk is not as much about losing money, rather is more about lagging the market or their peers. Investing is very much a relative game. If a portfolio drops 20% while the market drops 40%, this is seen as a much better outcome than if a portfolio goes up 20% while the market goes up 40%. Thus, a portfolio that moves closely with the market has a very low relative risk. This risk can be calculated as volatility by looking at the relative price movements, instead of the absolute price movements. 
+
+Investment professionals focus on relative risk for a number of reasons, one of which is the fact that they are not managing their own money. They need to prove to their bosses and clients that they are above average in their job. If a particular benchmark cannot be beaten by these investors, clients may ask why pay for them to manage their money when they could put it in a low-fee or no-fee mutual fund. This is one of the reasons that institutional investors need to compare their performance to some benchmark. Thus, the focus for investors is return and relative risk. Adding low risk stocks to the portfolio causes relative risk to increase a lot, making it an unappealing investment because low absolute risk inherently causes high relative risk. A low risk portfolio only makes sense if absolute risk is what one cares about. Thus, for those investors who don’t care about relative risk and just absolute risk, low risk stocks are a great investing opportunity.
+
+In addition to the reasons mentioned, there are several additional reasons why some investors are not attracted to low-risk stocks. Eric Falkenstein, a renowned author in the low volatility investing realm, wrote that “envy is at the root of the investment paradox.” Some investors don’t recognize the significance of compounding returns. Others do, but are unable to utilize the paradox due to relative risk and career pressures. Analysts who choose big winners are more likely to get recognized than those who pick safer stocks with lower upside potential, and funds that pick the right high risk stocks also see more reward in an increase in AUM. Moreover, some people do not invest in low risk stocks because they have less appeal of high risk stocks, where they think they can make money easily and quickly. These high risk stocks are more “sexy” and have a “lottery ticket” element that attracts investors with the appeal of a big payday. 
+
+
+#II) Data Overview
 "mscir" is a package that allows you to view the data of MSCI USA and MSCI Min Volatility.
 
-#I) Data Overview
 The raw data can be found in inst/extdata while processed data can be viewed by running the following commands:
 
  * __data(usa)__: Load the data for MSCI USA
@@ -29,38 +46,143 @@ library(ggplot2)
 
 ## View beginning and end of MSCI USA Data
 head(usa)
+
 tail(usa)
 
-## View beginning and end of MSCI USA Data
+## View beginning and end of MSCI Min Vol Data
 head(minvol)
+
 tail(minvol)
-
-
 ```
 
+``` {r usa, echo=FALSE}
+library(mscir)
+library(ggplot2)
 
+## Summary Statistics for MSCI USA Data
+summary(usa)
+```
 
+``` {r minvol, echo=FALSE}
+library(mscir)
+library(ggplot2)
 
+## Summary Statistics for MSCI Min Vol Data
+summary(minvol)
+```
 
 The unique sectors were identified, and a table with relative weights of each was constructed, for the data on a monthly basis. The different sectors were S.T.Securities, Health.care, Industrials, Financials, Materials, Consumer.Discretionary, Information.Technology, Energy, Consumer.Staples, Utilities, Telecommunication.Services, Real.Estate, Cash.Derivatives, Telecommunications. The date is shown on the leftmost rows, followed by the different sectors. Each sector then has its relative weight with respect to the date in the corresponding row.
 
+```{r}
+## Display the weight of each sector over time for the MSCI USA Index
+head(usa_weight)
 
-## R Markdown
+tail(usa_weight)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Display the weight of each sector over time for the MSCI USA Index
+head(minvol_weight)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+tail(minvol_weight)
 ```
 
-## Including Plots
+#III) Data Analysis
 
-You can also embed plots, for example:
+Plot MSCI USA vs. MSCI Min Vol industry weights of each sector over time:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+library(mscir)
+library(ggplot2)
+
+## Energy
+Eng1 <- usa_weight[which(usa_weight$Sector=="Energy"), ]
+Eng2 <- minvol_weight[which(minvol_weight$Sector=="Energy"), ]
+ggplot(Eng1, aes(Date, Weight, colour = "USA")) + geom_line() +  
+ggtitle("USA vs. Min Vol Energy Sector Weights") + xlab("Time") + ylab("Sector Weight") + 
+geom_line(data = Eng2, aes(x=Date, y=Weight, colour="Min Vol"),show.legend = TRUE)
+
+## Finacials
+Fin1 <- usa_weight[which(usa_weight$Sector=="Financials"), ]
+Fin2 <- minvol_weight[which(minvol_weight$Sector=="Financials"), ]
+ggplot(Fin1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Financial Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + 
+geom_line(data = Fin2, aes(x=Date, y=Weight, colour="Min Vol"),show.legend = TRUE)
+
+## Consumer Staples
+ConStap1 <- usa_weight[which(usa_weight$Sector=="Consumer Staples"), ]
+ConStap2 <- minvol_weight[which(minvol_weight$Sector=="Consumer Staples"), ]
+ggplot(ConStap1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Consumer Staples Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = ConStap2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Consumer Discretionary
+ConDis1 <- usa_weight[which(usa_weight$Sector=="Consumer Discretionary"), ]
+ConDis2 <- minvol_weight[which(minvol_weight$Sector=="Consumer Discretionary"), ]
+ggplot(ConDis1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Consumer Discretionary Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = ConDis2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Health Care
+Health1 <- usa_weight[which(usa_weight$Sector=="Health Care"), ]
+Health2 <- minvol_weight[which(minvol_weight$Sector=="Health Care"), ]
+ggplot(Health1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Health Care Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = Health2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Industrials
+Ind1 <- usa_weight[which(usa_weight$Sector=="Industrials"), ]
+Ind2 <- minvol_weight[which(minvol_weight$Sector=="Industrials"), ]
+ggplot(Ind1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Industrials Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = Ind2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Information Technology
+IT1 <- usa_weight[which(usa_weight$Sector=="Information Technology"), ]
+IT2 <- minvol_weight[which(minvol_weight$Sector=="Information Technology"), ]
+ggplot(IT1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Information Technology Sector Weights") + 
+xlab("Time") + ylab("Sector Weight") + geom_line(data = IT2, aes(x=Date, 
+y=Weight, colour="Min Vol"),show.legend = TRUE)
+
+## Materials
+Mat1 <- usa_weight[which(usa_weight$Sector=="Materials"), ]
+Mat2 <- minvol_weight[which(minvol_weight$Sector=="Materials"), ]
+ggplot(Mat1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Materials Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = Mat2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## S.T Securities
+ST1 <- usa_weight[which(usa_weight$Sector=="S-T Securities"), ]
+ST2 <- minvol_weight[which(minvol_weight$Sector=="S-T Securities"), ]
+ggplot(ST1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol S-T Securities Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = ST2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Utilites
+Util1 <- usa_weight[which(usa_weight$Sector=="Utilities"), ]
+Util2 <- minvol_weight[which(minvol_weight$Sector=="Utilities"), ]
+ggplot(Util1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Utilities Sector Weights") + xlab("Time") + 
+ylab("Sector Weight") + geom_line(data = Util2, aes(x=Date, y=Weight, 
+colour="Min Vol"),show.legend = TRUE)
+
+## Telecommunication Services
+Telecom1 <- usa_weight[which(usa_weight$Sector=="Telecommunication Services"), ]
+Telecom2 <- minvol_weight[which(minvol_weight$Sector=="Telecommunication Services"), ]
+ggplot(Telecom1, aes(Date, Weight, colour = "USA")) + geom_line() + 
+ggtitle("USA vs. Min Vol Telecommunications Services Sector Weights") + 
+xlab("Time") + ylab("Sector Weight") + geom_line(data = Telecom2, aes(x=Date, 
+y=Weight, colour="Min Vol"),show.legend = TRUE)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
