@@ -1,5 +1,6 @@
 #Create vector with unique dates
-#dates <- as.Date(unique(usa$Date))
+data(usa)
+dates <- as.Date(unique(usa$Date))
 library("zoo")
 
 summary <- data.frame();
