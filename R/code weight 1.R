@@ -27,5 +27,4 @@ View(table2)
 table3 <- rbind(table1, table2)
 View(table3)
 
-Telecom1 <- table3[which(table3 =="Telecommunication Services"), ]
-
+}
