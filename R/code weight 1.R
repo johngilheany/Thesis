@@ -29,6 +29,3 @@ View(table3)
 
 Telecom1 <- table3[which(table3 =="Telecommunication Services"), ]
 
-ggplot(Telecom1, aes(Date, Weight, colour = "USA")) + geom_line() + 
-  ggtitle("USA vs. Min Vol Telecommunications Services Sector Weights") + 
-  xlab("Time") + ylab("Sector Weight"))
