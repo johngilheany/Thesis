@@ -2,3 +2,5 @@
 
 export(process_data)
 export(rel_weight)
+export(usa_percent)
+export(minvol_percent)
