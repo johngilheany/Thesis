@@ -1,8 +1,8 @@
 ---
-title: "ThesisVignette"
+title: "Thesis Vignette"
 author: "John Gilheany"
 date: "2/11/2017"
-output: pdf_document: default
+output: pdf_document
 ---
 
 #I) Literature Review
@@ -80,7 +80,6 @@ The unique sectors were identified, and a table with relative weights of each wa
 library(mscir)
 library(tidyquant)
 library(dplyr)
-data(usa)
 
 usa_percent <- data.frame();
 
@@ -989,7 +988,7 @@ tail(usa_percent)
 library(mscir)
 library(tidyquant)
 library(dplyr)
-data(minvol)
+library(knitr)
 
 minvol_percent <- data.frame();
 
